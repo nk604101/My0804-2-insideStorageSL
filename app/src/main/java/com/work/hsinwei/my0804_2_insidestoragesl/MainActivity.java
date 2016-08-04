@@ -60,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        //DAO
+        dataInfoDAO dao =new dataInfoDAOImpl();
+        dao.addDataInfo(new dataInfo("name","addresss","telephone"));
     }
     //Json 資料轉檔存入
     public void click1(View v)
