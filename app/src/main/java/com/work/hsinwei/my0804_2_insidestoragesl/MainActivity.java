@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +18,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -94,6 +98,31 @@ public class MainActivity extends AppCompatActivity {
     //Gson
     public void click2(View v)
     {
+        ArrayList<dataInfo> mlist = new ArrayList<>();
+        dataInfo d1= new dataInfo("Jo","aaa","12345");
+        dataInfo d2= new dataInfo("Bo","bbb","22222");
+
+        mlist.add(d1);
+        mlist.add(d2);
+
+        Gson gson =new Gson();
+        String str = gson.toJson(mlist,new TypeToken<ArrayList<dataInfo>>(){}.getType());
+        Log.d("T0804-Gson",str);
+
+        String fName = "mydata2.Json";
+        FileOutputStream fOut = null;
+
+        try {
+            fOut=openFileOutput(fName,MODE_PRIVATE);
+            OutputStreamWriter osw = new OutputStreamWriter(fOut);
+            osw.write(str);
+            osw.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
