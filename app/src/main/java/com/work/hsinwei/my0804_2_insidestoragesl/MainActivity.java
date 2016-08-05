@@ -64,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
         //DAO
         dataInfoDAO dao =new dataInfoDAOImpl();
         dao.addDataInfo(new dataInfo("name","addresss","telephone"));
+        dao.addDataInfo(new dataInfo("name2","addresss2","telephone2"));
+
+        Log.d("T0805-DAO",""+dao.getAllDataInfo().size());
+        //Log.d("T0805-DAO",""+str);
     }
     //Json 資料轉檔存入
     public void click1(View v)
